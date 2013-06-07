@@ -24,3 +24,9 @@ cd vim
 make VIMRUNTIMEDIR=/usr/share/vim/vim73
 sudo make install
 ```
+
+#### Credits
+
+The .vimrc file is a modified version of the "cleanest vimrc" by Yan Pritzker. http://yanpritzker.com/2012/01/20/the-cleanest-vimrc-youve-ever-seen/
+
+Please check it out and thank him.  His .vimrc is especially useful if you are a new vim-er :D
