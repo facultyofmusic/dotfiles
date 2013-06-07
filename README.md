@@ -1,6 +1,16 @@
 #Vim Files
 
-Note that you need to install pathogen and have the latest version of vim for this. 
+Note that you need to install pathogen and have the latest version of vim for this. The following commands assume that you are on ubuntu-linux or similar distros.
+
+#### Some key remapped:
+F2 => <Esc> :NERDTree <CR>
+F3 => <Esc> :CtrlP <CR>
+F4 => " snipmate snip complete
+
+#### Issues:
+Currently snipmate only works so far until youcompleteme starts to obstruct it.  You try to find a fix for that sometime.
+
+##Installation (in case you somehow messed up your system again)
 
 #### Here's how to get the latest version of vim:
 
@@ -23,6 +33,12 @@ cd vim
 --enable-gui=gtk2 --enable-cscope --prefix=/usr
 make VIMRUNTIMEDIR=/usr/share/vim/vim73
 sudo make install
+```
+
+#### YouCompleteMe needs this:
+```
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
 ```
 
 #### Credits

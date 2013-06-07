@@ -109,3 +109,6 @@ let Tlist_Auto_Open=1
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 
+" ================ KEY REMAPPINGS ===================
+map <F2> <Esc> :NERDTreeToggle <CR>
+map <F3> <Esc> :CtrlP <CR>
