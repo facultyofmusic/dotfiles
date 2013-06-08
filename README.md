@@ -10,6 +10,9 @@ F4 => Toggles taglist.  If activated in insert mode you will be put back to inse
 F5 => Previous tab.
 F6 => Next Tab.
 
+F7 => quits current window
+F8 => quits all windows
+
 #### Issues:
 Currently snipmate only works so far until youcompleteme starts to obstruct it.  You try to find a fix for that sometime.
 
