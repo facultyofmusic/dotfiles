@@ -3,9 +3,12 @@
 Note that you need to install pathogen and have the latest version of vim for this. The following commands assume that you are on ubuntu-linux or similar distros.
 
 #### Some key remapped:
-F2 => <Esc> :NERDTree <CR>
-F3 => <Esc> :CtrlP <CR>
-F4 => " snipmate snip complete
+F2 => Toggles NERDTree. Exits out of all modes.
+F3 => Opens CtrlP window.  Pressing F3 again just tries to re-open it.
+F4 => Toggles taglist.  If activated in insert mode you will be put back to insert mode after taglist opens.
+
+F5 => Previous tab.
+F6 => Next Tab.
 
 #### Issues:
 Currently snipmate only works so far until youcompleteme starts to obstruct it.  You try to find a fix for that sometime.

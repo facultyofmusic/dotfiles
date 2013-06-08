@@ -1,4 +1,8 @@
-" This must be first, because it changes other options as a side effect.
+"
+"
+" BEGIN
+"
+"
 set nocompatible
 
 
@@ -110,5 +114,35 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 
 " ================ KEY REMAPPINGS ===================
-map <F2> <Esc> :NERDTreeToggle <CR>
-map <F3> <Esc> :CtrlP <CR>
+map <silent> <F2> :NERDTreeToggle<CR>
+imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
+
+map <silent> <F3> <Esc>:CtrlP<CR>
+imap <silent> <F3> <Esc>:CtrlP<CR>
+
+map <silent> <F4> <Esc>:TlistToggle<CR>
+imap <silent> <F4> <Esc>:TlistToggle<CR>i
+
+map <silent> <F5> <Esc>:tabp<CR>
+imap <silent> <F5> <Esc>:tabp<CR>i
+
+map <silent> <F6> <Esc>:tabn<CR>
+imap <silent> <F5> <Esc>:tabn<CR>i
+
+map <silent> <F7> <Esc>:q<CR>
+imap <silent> <F7> <Esc>:q<CR>
+
+map <silent> <F8> <Esc>:qa<CR>
+imap <silent> <F8> <Esc>:qa<CR>
+
+
+
+"
+"
+"
+"
+" END
+"
+"
+"
+"
