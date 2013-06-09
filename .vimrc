@@ -101,6 +101,9 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" ================ YOU COMPLETE ME ==================
+let g:ycm_min_num_of_chars_for_completion = 99
+
 " ================ EXECUTE PATHOGEN =================
 execute pathogen#infect()
 
