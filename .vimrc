@@ -22,11 +22,6 @@ set autoread                    "Reload files changed outside vim
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-"turn on syntax highlighting
-syntax on
-set hls
-set background=dark
-
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all 
@@ -138,6 +133,12 @@ imap <silent> <F7> <Esc>:q<CR>
 map <silent> <F8> <Esc>:qa<CR>
 imap <silent> <F8> <Esc>:qa<CR>
 
+
+" =============== SOLARIZED SYNTAX HIGHLIGHT ========
+set hls
+syntax enable
+set background=dark
+colorscheme solarized
 
 
 "
