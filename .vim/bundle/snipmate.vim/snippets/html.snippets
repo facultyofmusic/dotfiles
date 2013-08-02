@@ -116,10 +116,14 @@ snippet head
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
-snippet script
+snippet scriptjs
 	<script type="text/javascript" charset="utf-8">
 		${1}
 	</script>${2}
+snippet scripthb
+	<script type="text/x-handlebars" id="${1}" charset="utf-8">
+		${2}
+	</script>${3}
 snippet scriptsrc
 	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
 snippet style
@@ -131,6 +135,14 @@ snippet base
 snippet r
 	<br`Close()[1:]`>
 snippet div
+	<div>
+		${1}
+	</div>
+snippet div.
+	<div class="${1:name}">
+		${2}
+	</div>
+snippet div#
 	<div id="${1:name}">
 		${2}
 	</div>
