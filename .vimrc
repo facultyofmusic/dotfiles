@@ -5,6 +5,8 @@
 "
 set nocompatible
 
+" ================ SYNTAX ============================
+au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=handlebars
 
 " ================ General Config ====================
 
@@ -121,11 +123,11 @@ imap <silent> <F3> <Esc>:CtrlP<CR>
 map <silent> <F4> <Esc>:TlistToggle<CR>
 imap <silent> <F4> <Esc>:TlistToggle<CR>i
 
-map <silent> <F5> <Esc>:tabp<CR>
-imap <silent> <F5> <Esc>:tabp<CR>i
+" map <silent> <F5> <Esc>:tabp<CR>
+" imap <silent> <F5> <Esc>:tabp<CR>i
 
-map <silent> <F6> <Esc>:tabn<CR>
-imap <silent> <F5> <Esc>:tabn<CR>i
+" map <silent> <F6> <Esc>:tabn<CR>
+" imap <silent> <F6> <Esc>:tabn<CR>i
 
 map <silent> <F7> <Esc>:q<CR>
 imap <silent> <F7> <Esc>:q<CR>
@@ -138,7 +140,7 @@ imap <silent> <F8> <Esc>:qa<CR>
 set hls
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 
 "
