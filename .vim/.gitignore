@@ -1,0 +1,3 @@
+# Vundles
+bundle/*
+!bundle/vundle
