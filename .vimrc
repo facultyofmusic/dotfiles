@@ -29,6 +29,9 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+">Quick compiling
+Bundle 'xuhdev/SingleCompile'
+
 ">Languages and Syntax
 Bundle 'othree/html5.vim'
 " Bundle 'kchmck/vim-coffee-script'
@@ -88,7 +91,7 @@ let g:ctrlp_prompt_mappings = {
 
 
 "=============== TAGBAR VARS =======================
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
+let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
 let g:tagbar_width=26                          " Default is 40, seems too wide
 
 " ================ KEY REMAPPINGS ===================
@@ -109,6 +112,12 @@ imap <silent> <F6> <Esc>:tabn<CR>i
 
 map <silent> <F11> <Esc>:q<CR>
 imap <silent> <F11> <Esc>:q<CR>
+
+map <F9> :SCCompile<CR>
+imap <F9> :SCCompile<CR>
+
+map <C-F9> :SCCompileRun<CR>
+imap <C-F9> :SCCompileRun<CR>
 
 
 
@@ -363,7 +372,7 @@ set hlsearch
 set incsearch
 
 " Default global substitution
-set gdefault
+" set gdefault
 
 " Do not redraw when executing macros
 set nolazyredraw
@@ -404,9 +413,9 @@ set noswapfile
 " Tab settings
 set expandtab
 set smarttab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 se
 
 set linebreak
