@@ -346,6 +346,12 @@ set mouse=a
 " Start scrolling 5 lines before the top/bottom
 set scrolloff=10
 
+
+
+
+
+
+
 " Turn on enhanced completions, and set completion options
 " set wildmenu
 set wildmode=list:longest
@@ -416,7 +422,6 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-se
 
 set linebreak
 set textwidth=0
