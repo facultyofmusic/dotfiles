@@ -34,7 +34,6 @@ Bundle 'xuhdev/SingleCompile'
 
 ">Languages and Syntax
 Bundle 'othree/html5.vim'
-" Bundle 'kchmck/vim-coffee-script'
 " Bundle 'digitaltoad/vim-jade'
 " Bundle 'groenewege/vim-less'
 " Bundle 'vim-stylus'
@@ -44,6 +43,7 @@ Bundle 'mattn/emmet-vim'
 " Bundle 'coot/atp_vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-endwise'
+Bundle 'leafgarland/typescript-vim'
 
 ">UI Upgrades
 Bundle 'majutsushi/tagbar'
@@ -51,8 +51,8 @@ Bundle 'scrooloose/nerdtree'
 " Bundle 'scrooloose/syntastic'
 " Bundle 'sjl/gundo.vim'
 " Bundle 'fholgado/minibufexpl.vim'
-Bundle 'Lokaltog/vim-powerline'
-" Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
@@ -75,9 +75,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'terryma/vim-multiple-cursors'
 
 ">Misc Upgrades
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'mattn/gist-vim'
-" Bundle 'mattn/webapi-vim'
+Bundle 'tpope/vim-fugitive'
 
 
 "================ CONTROL-P VARS ===================
@@ -94,6 +92,7 @@ let g:ctrlp_prompt_mappings = {
 let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
 let g:tagbar_width=26                          " Default is 40, seems too wide
 
+
 " ================ KEY REMAPPINGS ===================
 map <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
@@ -102,45 +101,7 @@ map <silent> <F3> <Esc>:CtrlP<CR>
 imap <silent> <F3> <Esc>:CtrlP<CR>
 
 map <silent> <F4> <Esc>:TagbarToggle<CR>
-imap <silent> <F4> <Esc>:TagbarToggle<CR>i
-
-map <silent> <F5> <Esc>:tabp<CR>
-imap <silent> <F5> <Esc>:tabp<CR>i
-
-map <silent> <F6> <Esc>:tabn<CR>
-imap <silent> <F6> <Esc>:tabn<CR>i
-
-map <silent> <F11> <Esc>:q<CR>
-imap <silent> <F11> <Esc>:q<CR>
-
-map <F9> :SCCompile<CR>
-imap <F9> :SCCompile<CR>
-
-map <C-F9> :SCCompileRun<CR>
-imap <C-F9> :SCCompileRun<CR>
-
-
-
-">kien/ctrlp.vim
-" set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
-" let g:ctrlp_map = '<leader>t'
-" let g:ctrlp_cmd = 'CtrlPMixed'
-" let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_mruf_relative = 1
-
-"let g:ctrlp_buftag_types = {
-"      \ 'go'         : '--language-force=go --golang-types=ftv',
-"      \ 'coffee'     : '--language-force=coffee --coffee-types=cmfvf',
-"      \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
-"      \ 'objc'       : '--language-force=objc --objc-types=mpci',
-"      \ }
-
-">YankRing.vim
-" let g:yankring_history_file = '.yankring_history'
-
-">scrooloose/nerdcommenter
-" let g:NERDSpaceDelims = 1
+imap <silent> <F4> <Esc>:TagbarToggle<CR>
 
 ">scrooloose/syntastic
 " let g:syntastic_quiet_warnings = 1
@@ -149,12 +110,11 @@ imap <C-F9> :SCCompileRun<CR>
 " let g:syntastic_warning_symbol = '⚠'
 " let g:syntastic_auto_loc_list = 0
 
-"=============Lokaltog/vim-powerline
-let g:Powerline_symbols = 'fancy'
-
 "=============VIM AIRLINE
-" set guifont=Monaco\ for\ Powerline\ 10 
-" let g:airline_powerline_fonts = 1
+set guifont=Monaco\ for\ Powerline\ 10 
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_theme='powerlineish'
 
 ">fholgado/minibufexpl.vim
 " let g:miniBufExplHideWhenDiff = 1
@@ -167,9 +127,6 @@ let g:Powerline_symbols = 'fancy'
 " let g:gist_detect_filetype = 1
 " let g:gist_show_privates = 1
 " let g:gist_post_private = 1
-
-">mattn/zencoding-vim
-" let g:user_zen_leader_key = '<c-x>'
 
 "============altercation/vim-colors-solarized
 let g:solarized_termtrans = 1
@@ -242,25 +199,8 @@ endfunction
 
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
-
-">Key Remappings
-">==============
-
-">Bundle Mappings
-
-">sjl/gundo.vim
-" nnoremap <silent> <leader>u :GundoToggle<cr>
-
-" mattn/zencoding-vim
-" <c-x> toggles zencoding (mapped using zencoding's global variable)
-
 " Shougo/neocomplcache
 inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
-
-" Other Mappings
-
-" Quickly edit vimrc.
-" nnoremap <leader>e :e! ~/.vimrc<cr>
 
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
@@ -269,12 +209,13 @@ inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
 " nnoremap <leader><space> :noh<cr>
 
 " Reselect visual block after indent/outdent
+" Honestly just use '.' and 'u'.
 " vnoremap < <gv
 " vnoremap > >gv
 
 " Disable arrow keys by default, turn them into something useful (switch buffer).
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
+nnoremap <silent> <left> :tabp<cr>
+nnoremap <silent> <right> :tabn<cr>
 " nnoremap <left> :bp<cr>
 " nnoremap <right> :bn<cr>
 
@@ -282,8 +223,8 @@ inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
 " nnoremap <s-k> <nop>
 
 " Don't need shift for commands.
-" nnoremap ; :
-" vnoremap ; :
+nnoremap ; :
+vnoremap ; :
 
 " Leader to reselect pasted
 " nnoremap <leader>v V`]
@@ -327,7 +268,7 @@ filetype indent on
 set cursorline
 
 " Fast terminal
-" set ttyfast
+set ttyfast
 
 " Set to auto read when a file is changed from the outside
 " set autoread
@@ -336,21 +277,15 @@ set cursorline
 set timeoutlen=500
 set ttimeoutlen=50
 
-" Better copy and paste
-" set pastetoggle=<F2>
-" set clipboard=unnamed
-
-" Add mouse scrolling.
+" Add mouse scrolling and drag support in tmux
 set mouse=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode 
+    set ttymouse=xterm2
+endif
 
 " Start scrolling 5 lines before the top/bottom
-set scrolloff=10
-
-
-
-
-
-
+set scrolloff=5
 
 " Turn on enhanced completions, and set completion options
 " set wildmenu
@@ -358,7 +293,7 @@ set wildmode=list:longest
 set completeopt=menuone,longest
 
 " Command bar height
-set cmdheight=2
+set cmdheight=1
 
 " Change buffers without saving (allow hidden buffers).
 set hidden
@@ -376,9 +311,6 @@ set hlsearch
 
 " Make search act like in modern browsers
 set incsearch
-
-" Default global substitution
-" set gdefault
 
 " Do not redraw when executing macros
 set nolazyredraw
