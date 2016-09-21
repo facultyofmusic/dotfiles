@@ -89,7 +89,7 @@ let g:ctrlp_prompt_mappings = {
 
 
 "=============== TAGBAR VARS =======================
-let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
+let g:tagbar_ctags_bin='/usr/bin/ctags'  " Proper Ctags locations
 let g:tagbar_width=26                          " Default is 40, seems too wide
 
 
@@ -136,11 +136,11 @@ let g:solarized_visibility = "normal"
 
 set background=dark
 
-colorscheme solarized
+" colorscheme solarized
 
 "============nanotech/jellybeans.vim
 let g:jellybeans_use_lowcolor_black = 0
-" colorscheme jellybeans
+colorscheme jellybeans
 
 "============hybrid
 " colorscheme hybrid
