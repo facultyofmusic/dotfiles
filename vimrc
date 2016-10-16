@@ -29,9 +29,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-">Quick compiling
-Bundle 'xuhdev/SingleCompile'
-
 ">Languages and Syntax
 Bundle 'othree/html5.vim'
 " Bundle 'digitaltoad/vim-jade'
@@ -44,6 +41,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-endwise'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'lervag/vimtex'
 
 ">UI Upgrades
 Bundle 'majutsushi/tagbar'
@@ -60,6 +58,7 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'godlygeek/csapprox'
 
 ">Editing Upgrades
+Bundle 'haya14busa/incsearch.vim'
 " Bundle 'ack.vim'
 " Bundle 'YankRing.vim'
 " Bundle 'goldfeld/vim-seek'
@@ -78,19 +77,35 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-fugitive'
 
 
+"============== vimtex ===============
+let g:vimtex_format_enabled=1
+" let g:vimtex_fold_enabled=1
+
+" latex exclusive leader shortcuts
+autocmd FileType tex call SetVimTexShortcuts()
+function SetVimTexShortcuts()
+    nnoremap <leader>te :VimtexErrors<CR>
+    nnoremap <leader>tc :VimtexCompile<CR>
+endfunction
+
+"============= inc search ==============
+map /   <Plug>(incsearch-forward)
+map ?   <Plug>(incsearch-backward)
+map g/  <Plug>(incsearch-stay)
+
 "================ CONTROL-P VARS ===================
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<c-t>'],
+"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+"     \ }
 
 
 "=============== TAGBAR VARS =======================
 let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
-let g:tagbar_width=26                          " Default is 40, seems too wide
+let g:tagbar_width=26   " Default is 40, seems too wide
 
 
 " ================ KEY REMAPPINGS ===================
@@ -199,17 +214,16 @@ endfunction
 
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
-" Shougo/neocomplcache
 inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
 
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
 
 " Clears highlighting.
-" nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :noh<cr>
 
 " Reselect visual block after indent/outdent
-" Honestly just use '.' and 'u'.
+" EDIT: Honestly just use '.' and 'u'.
 " vnoremap < <gv
 " vnoremap > >gv
 
@@ -225,9 +239,6 @@ nnoremap <silent> <right> :tabn<cr>
 " Don't need shift for commands.
 nnoremap ; :
 vnoremap ; :
-
-" Leader to reselect pasted
-" nnoremap <leader>v V`]
 
 " Remap split window navigation
 nnoremap <C-h> <C-w>h
@@ -271,7 +282,7 @@ set cursorline
 set ttyfast
 
 " Set to auto read when a file is changed from the outside
-" set autoread
+set autoread
 
 " Speed up <shift>O
 set timeoutlen=500
