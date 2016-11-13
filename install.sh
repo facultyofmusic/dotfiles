@@ -15,10 +15,5 @@ cp ./vimrc ~/.vimrc
 echo "> Making bundle directory"
 mkdir -p ~/.vim/bundle/
 echo "> Getting latest Vundle"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
-echo "> Finish this up by starting vim and running :BundleInstall"
-
-# Setup zshrc
-# TODO Check if they have oh my zsh installed first and if they don't then install it.
-echo "> Copying .zshrc"
-cp .zshrc ~/.zshrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "> Finish this up by starting vim and running :PluginInstall"

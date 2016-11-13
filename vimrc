@@ -1,80 +1,64 @@
-" Daniel Gen Li's vimrc
-"
-" Thanks to John Liu for all his help and experties!
-"
-" Some general instructions:
-" - Requires `vundle` (https://github.com/gmarik/vundle)
-" - Run `:BundleInstall` on first run.
-
-" Critical Configurations
-" =======================
-
-">Terminal Colours
-set t_Co=256
-
-">Vundle Setup Requirementns
+">Vundle Plugins
+" ==============
 set nocompatible
-filetype on
 filetype off
 
-">Leader Key
-let mapleader = ","
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 
-">Vundle Bundles
-" ==============
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
+">Quick compiling
+Plugin 'xuhdev/SingleCompile'
 
 ">Languages and Syntax
-Bundle 'othree/html5.vim'
-" Bundle 'digitaltoad/vim-jade'
-" Bundle 'groenewege/vim-less'
-" Bundle 'vim-stylus'
-" Bundle 'c.vim'
-" Bundle 'derekwyatt/vim-scala'
-Bundle 'mattn/emmet-vim'
-" Bundle 'coot/atp_vim'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-endwise'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'lervag/vimtex'
+Plugin 'othree/html5.vim'
+" Plugin 'digitaltoad/vim-jade'
+" Plugin 'groenewege/vim-less'
+" Plugin 'vim-stylus'
+Plugin 'c.vim'
+" Plugin 'derekwyatt/vim-scala'
+Plugin 'mattn/emmet-vim'
+" Plugin 'coot/atp_vim'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'rhysd/vim-clang-format'
 
 ">UI Upgrades
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/nerdtree'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'sjl/gundo.vim'
-" Bundle 'fholgado/minibufexpl.vim'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'kien/ctrlp.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'godlygeek/csapprox'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'sjl/gundo.vim'
+" Plugin 'fholgado/minibufexpl.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'godlygeek/csapprox'
 
 ">Editing Upgrades
-Bundle 'haya14busa/incsearch.vim'
-" Bundle 'ack.vim'
-" Bundle 'YankRing.vim'
-" Bundle 'goldfeld/vim-seek'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'Raimondi/delimitMate'
-" Bundle 'tpope/vim-surround'
-Bundle 'Shougo/neocomplcache'
-" Bundle 'davidhalter/jedi-vim'
-Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'simplyzhao/cscope_maps.vim'
-" Bundle 'rizzatti/funcoo.vim'
-" Bundle 'rizzatti/dash.vim'
-Bundle 'terryma/vim-multiple-cursors'
+" Plugin 'ack.vim'
+" Plugin 'YankRing.vim'
+" Plugin 'goldfeld/vim-seek'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'Raimondi/delimitMate'
+" Plugin 'tpope/vim-surround'
+Plugin 'Shougo/neocomplcache'
+" Plugin 'davidhalter/jedi-vim'
+Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'simplyzhao/cscope_maps.vim'
+" Plugin 'rizzatti/funcoo.vim'
+" Plugin 'rizzatti/dash.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 ">Misc Upgrades
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+filetype plugin indent on
 
 
 "============== vimtex ===============
@@ -94,14 +78,10 @@ map ?   <Plug>(incsearch-backward)
 map g/  <Plug>(incsearch-stay)
 
 "================ CONTROL-P VARS ===================
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-
-" let g:ctrlp_prompt_mappings = {
-"     \ 'AcceptSelection("e")': ['<c-t>'],
-"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-"     \ }
-
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 "=============== TAGBAR VARS =======================
 let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
@@ -216,6 +196,9 @@ autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
 
+" Best leader
+let mapleader = ","
+
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
 
@@ -254,12 +237,11 @@ nnoremap <C-l> <C-w>l
 :ca W w
 :ca Q q
 
-" Leader to toggle list chars
-" nnoremap <leader>l :set list!<cr>
-
 
 " Misc Settings
 " =============
+set t_Co=256
+colorscheme jellybeans
 
 " Remember 700 lines of history.
 set history=700
@@ -339,6 +321,7 @@ set visualbell
 set t_vb=
 
 " Attempt to turn on encoding
+scriptencoding utf-8
 set encoding=utf8
 try
   lang en_US
@@ -349,7 +332,7 @@ endtry
 set number
 
 " Enable syntax highlighting
-syntax enable
+syntax on
 
 " Set invisible characters
 set listchars=eol:¬,tab:▸·,trail:·
@@ -362,9 +345,10 @@ set noswapfile
 " Tab settings
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftround
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 
 set linebreak
 set textwidth=0
@@ -377,6 +361,7 @@ set formatoptions=qrn1
 " Indentation settings
 set autoindent
 set smartindent
+set cindent
 au! FileType python setl nosmartindent 
 
 " Always hide the status line
