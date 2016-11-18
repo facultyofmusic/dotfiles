@@ -53,10 +53,11 @@ Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'rizzatti/funcoo.vim'
 " Plugin 'rizzatti/dash.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'haya14busa/incsearch.vim'
 
 ">Misc Upgrades
 Plugin 'tpope/vim-fugitive'
-
+"
 call vundle#end()
 filetype plugin indent on
 
@@ -77,120 +78,120 @@ map /   <Plug>(incsearch-forward)
 map ?   <Plug>(incsearch-backward)
 map g/  <Plug>(incsearch-stay)
 
-"================ CONTROL-P VARS ===================
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
-"=============== TAGBAR VARS =======================
-let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
-let g:tagbar_width=26   " Default is 40, seems too wide
-
-
-" ================ KEY REMAPPINGS ===================
-map <silent> <F2> :NERDTreeToggle<CR>
-imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
-
-map <silent> <F3> <Esc>:CtrlP<CR>
-imap <silent> <F3> <Esc>:CtrlP<CR>
-
-map <silent> <F4> <Esc>:TagbarToggle<CR>
-imap <silent> <F4> <Esc>:TagbarToggle<CR>
-
-">scrooloose/syntastic
-" let g:syntastic_quiet_warnings = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_error_symbol = '✗'
-" let g:syntastic_warning_symbol = '⚠'
-" let g:syntastic_auto_loc_list = 0
-
-"=============VIM AIRLINE
-set guifont=Monaco\ for\ Powerline\ 10 
-let g:airline_powerline_fonts = 1
-let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_theme='powerlineish'
-
-">fholgado/minibufexpl.vim
-" let g:miniBufExplHideWhenDiff = 1
-
-">Raimondi/delimitMate
-" let delimitMate_balance_matchpairs = 1
-
-">mattn/gist-vim
-" let g:gist_clip_command = 'pbcopy'
-" let g:gist_detect_filetype = 1
-" let g:gist_show_privates = 1
-" let g:gist_post_private = 1
-
-"============altercation/vim-colors-solarized
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
-let g:solarized_constrast = "normal"
-let g:solarized_visibility = "normal"
-
-set background=dark
-
-colorscheme solarized
-
-"============nanotech/jellybeans.vim
-let g:jellybeans_use_lowcolor_black = 0
-" colorscheme jellybeans
-
-"============hybrid
-" colorscheme hybrid
-
-">Set font for GUI vim.
-if has("gui_running")
-  set guifont=Monaco:h14
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-endif
-
-">dhalter/jedi-vim
-" let g:jedi#auto_initialization = 1
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#show_function_definition = 0
-" autocmd FileType python let b:did_ftplugin = 1
-
-">Shougo/neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 0
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_min_keyword_length = 3
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_compare_function = 'neocomplcache#compare_human'
-
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-
-if !exists('g:neocomplcache_omni_functions')
-  let g:neocomplcache_omni_functions = {}
-endif
-let g:neocomplcache_omni_functions['python'] = 'jedi#complete'
-
-if !exists('g:neocomplcache_disabled_sources_list')
-  let g:neocomplcache_disabled_sources_list = {}
-endif
-
-function! CompleteCommonStringOrFinish(normal)
-  if pumvisible()
-    let l:result = neocomplcache#complete_common_string()
-    let l:check = neocomplcache#get_cur_text()
-    if l:result != '' && strlen(l:result) - strridx(l:result, l:check) != strlen(l:check)
-      return l:result
-    endif
-    return "\<cr>"
-  endif
-  return a:normal
-endfunction
+" "================ CONTROL-P VARS ===================
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"   \ 'file': '\v\.(exe|so|dll)$',
+"   \ }
+"
+" "=============== TAGBAR VARS =======================
+" let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
+" let g:tagbar_width=26   " Default is 40, seems too wide
+"
+"
+" " ================ KEY REMAPPINGS ===================
+" map <silent> <F2> :NERDTreeToggle<CR>
+" imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
+"
+" map <silent> <F3> <Esc>:CtrlP<CR>
+" imap <silent> <F3> <Esc>:CtrlP<CR>
+"
+" map <silent> <F4> <Esc>:TagbarToggle<CR>
+" imap <silent> <F4> <Esc>:TagbarToggle<CR>
+"
+" ">scrooloose/syntastic
+" " let g:syntastic_quiet_warnings = 1
+" " let g:syntastic_check_on_open = 1
+" " let g:syntastic_error_symbol = '✗'
+" " let g:syntastic_warning_symbol = '⚠'
+" " let g:syntastic_auto_loc_list = 0
+"
+" "=============VIM AIRLINE
+" set guifont=Monaco\ for\ Powerline\ 10 
+" let g:airline_powerline_fonts = 1
+" let g:airline_section_b = '%{strftime("%c")}'
+" let g:airline_theme='powerlineish'
+"
+" ">fholgado/minibufexpl.vim
+" " let g:miniBufExplHideWhenDiff = 1
+"
+" ">Raimondi/delimitMate
+" " let delimitMate_balance_matchpairs = 1
+"
+" ">mattn/gist-vim
+" " let g:gist_clip_command = 'pbcopy'
+" " let g:gist_detect_filetype = 1
+" " let g:gist_show_privates = 1
+" " let g:gist_post_private = 1
+"
+" "============altercation/vim-colors-solarized
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors = 256
+" let g:solarized_constrast = "normal"
+" let g:solarized_visibility = "normal"
+"
+" set background=dark
+"
+" colorscheme solarized
+"
+" "============nanotech/jellybeans.vim
+" let g:jellybeans_use_lowcolor_black = 0
+" " colorscheme jellybeans
+"
+" "============hybrid
+" " colorscheme hybrid
+"
+" ">Set font for GUI vim.
+" if has("gui_running")
+"   set guifont=Monaco:h14
+"   set guioptions-=T
+"   set guioptions-=r
+"   set guioptions-=R
+"   set guioptions-=l
+"   set guioptions-=L
+" endif
+"
+" ">dhalter/jedi-vim
+" " let g:jedi#auto_initialization = 1
+" " let g:jedi#popup_on_dot = 0
+" " let g:jedi#use_tabs_not_buffers = 0
+" " let g:jedi#show_function_definition = 0
+" " autocmd FileType python let b:did_ftplugin = 1
+"
+" ">Shougo/neocomplcache
+" let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_ignore_case = 0
+" let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_underbar_completion = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_min_keyword_length = 3
+" let g:neocomplcache_enable_auto_select = 1
+" let g:neocomplcache_compare_function = 'neocomplcache#compare_human'
+"
+" if !exists('g:neocomplcache_omni_patterns')
+"   let g:neocomplcache_omni_patterns = {}
+" endif
+"
+" if !exists('g:neocomplcache_omni_functions')
+"   let g:neocomplcache_omni_functions = {}
+" endif
+" let g:neocomplcache_omni_functions['python'] = 'jedi#complete'
+"
+" if !exists('g:neocomplcache_disabled_sources_list')
+"   let g:neocomplcache_disabled_sources_list = {}
+" endif
+"
+" function! CompleteCommonStringOrFinish(normal)
+"   if pumvisible()
+"     let l:result = neocomplcache#complete_common_string()
+"     let l:check = neocomplcache#get_cur_text()
+"     if l:result != '' && strlen(l:result) - strridx(l:result, l:check) != strlen(l:check)
+"       return l:result
+"     endif
+"     return "\<cr>"
+"   endif
+"   return a:normal
+" endfunction
 
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
@@ -318,7 +319,6 @@ set matchtime=2
 " No sound on errors
 set noerrorbells
 set visualbell
-set t_vb=
 
 " Attempt to turn on encoding
 scriptencoding utf-8
@@ -341,6 +341,9 @@ set listchars=eol:¬,tab:▸·,trail:·
 set nobackup
 set nowb
 set noswapfile
+
+" Version control
+set diffopt+=vertical
 
 " Tab settings
 set expandtab
