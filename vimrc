@@ -45,8 +45,8 @@ Plugin 'godlygeek/csapprox'
 " Plugin 'goldfeld/vim-seek'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Raimondi/delimitMate'
-" Plugin 'tpope/vim-surround'
-Plugin 'Shougo/neocomplcache'
+Plugin 'tpope/vim-surround'
+Plugin 'Shougo/neocomplete.vim'
 " Plugin 'davidhalter/jedi-vim'
 Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'simplyzhao/cscope_maps.vim'
@@ -69,8 +69,8 @@ let g:vimtex_format_enabled=1
 " latex exclusive leader shortcuts
 autocmd FileType tex call SetVimTexShortcuts()
 function SetVimTexShortcuts()
-    nnoremap <leader>te :VimtexErrors<CR>
-    nnoremap <leader>tc :VimtexCompile<CR>
+  nnoremap <leader>te :VimtexErrors<CR>
+  nnoremap <leader>tc :VimtexCompile<CR>
 endfunction
 
 "============= inc search ==============
@@ -158,44 +158,50 @@ map g/  <Plug>(incsearch-stay)
 " " let g:jedi#show_function_definition = 0
 " " autocmd FileType python let b:did_ftplugin = 1
 "
-" ">Shougo/neocomplcache
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_ignore_case = 0
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_min_keyword_length = 3
-" let g:neocomplcache_enable_auto_select = 1
-" let g:neocomplcache_compare_function = 'neocomplcache#compare_human'
-"
-" if !exists('g:neocomplcache_omni_patterns')
-"   let g:neocomplcache_omni_patterns = {}
-" endif
-"
-" if !exists('g:neocomplcache_omni_functions')
-"   let g:neocomplcache_omni_functions = {}
-" endif
-" let g:neocomplcache_omni_functions['python'] = 'jedi#complete'
-"
-" if !exists('g:neocomplcache_disabled_sources_list')
-"   let g:neocomplcache_disabled_sources_list = {}
-" endif
-"
-" function! CompleteCommonStringOrFinish(normal)
-"   if pumvisible()
-"     let l:result = neocomplcache#complete_common_string()
-"     let l:check = neocomplcache#get_cur_text()
-"     if l:result != '' && strlen(l:result) - strridx(l:result, l:check) != strlen(l:check)
-"       return l:result
-"     endif
-"     return "\<cr>"
-"   endif
-"   return a:normal
-" endfunction
+">Shougo/neocomplete
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-inoremap <expr> <tab> CompleteCommonStringOrFinish("\<tab>")
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+" inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 
 " Best leader
 let mapleader = ","
@@ -274,8 +280,8 @@ set ttimeoutlen=50
 " Add mouse scrolling and drag support in tmux
 set mouse=a
 if &term =~ '^screen'
-    " tmux knows the extended mouse mode 
-    set ttymouse=xterm2
+  " tmux knows the extended mouse mode 
+  set ttymouse=xterm2
 endif
 
 " Start scrolling 5 lines before the top/bottom
