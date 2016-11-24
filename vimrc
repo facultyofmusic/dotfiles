@@ -61,6 +61,8 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
+" Best leader
+let mapleader = ","
 
 "============== vimtex ===============
 let g:vimtex_format_enabled=1
@@ -196,9 +198,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-
-" Best leader
-let mapleader = ","
 
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
