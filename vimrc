@@ -90,15 +90,9 @@ map g/  <Plug>(incsearch-stay)
 "
 "
 " " ================ KEY REMAPPINGS ===================
-" map <silent> <F2> :NERDTreeToggle<CR>
-" imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
-"
-" map <silent> <F3> <Esc>:CtrlP<CR>
-" imap <silent> <F3> <Esc>:CtrlP<CR>
-"
-" map <silent> <F4> <Esc>:TagbarToggle<CR>
-" imap <silent> <F4> <Esc>:TagbarToggle<CR>
-"
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>tb :TagbarToggle<CR>
+
 " ">scrooloose/syntastic
 " " let g:syntastic_quiet_warnings = 1
 " " let g:syntastic_check_on_open = 1
