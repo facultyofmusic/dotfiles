@@ -62,6 +62,8 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
+" Best leader
+let mapleader = ","
 
 "============== vimtex ===============
 let g:vimtex_format_enabled=1
@@ -185,16 +187,13 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
-" Best leader
-let mapleader = ","
-
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
 
 " Global leader shortcuts
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader><n> :NERDTreeToggle<cr>
-nnoremap <leader><t> :TagbarToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>t :TagbarToggle<cr>
 
 " Reselect visual block after indent/outdent
 " EDIT: Honestly just use '.' and 'u'.
