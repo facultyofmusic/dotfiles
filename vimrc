@@ -24,6 +24,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'lervag/vimtex'
 
 ">UI Upgrades
 Plugin 'majutsushi/tagbar'
@@ -61,8 +62,6 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
-" Best leader
-let mapleader = ","
 
 "============== vimtex ===============
 let g:vimtex_format_enabled=1
@@ -80,39 +79,26 @@ map /   <Plug>(incsearch-forward)
 map ?   <Plug>(incsearch-backward)
 map g/  <Plug>(incsearch-stay)
 
-" "================ CONTROL-P VARS ===================
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ }
-"
 " "=============== TAGBAR VARS =======================
 " let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'  " Proper Ctags locations
 " let g:tagbar_width=26   " Default is 40, seems too wide
 "
 "
-" " ================ KEY REMAPPINGS ===================
-nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>tb :TagbarToggle<CR>
-
 " ">scrooloose/syntastic
 " " let g:syntastic_quiet_warnings = 1
 " " let g:syntastic_check_on_open = 1
 " " let g:syntastic_error_symbol = '✗'
 " " let g:syntastic_warning_symbol = '⚠'
 " " let g:syntastic_auto_loc_list = 0
-"
-" "=============VIM AIRLINE
-" set guifont=Monaco\ for\ Powerline\ 10 
-" let g:airline_powerline_fonts = 1
-" let g:airline_section_b = '%{strftime("%c")}'
-" let g:airline_theme='powerlineish'
-"
+
+"=============VIM AIRLINE
+set guifont=Monaco\ for\ Powerline\ 10 
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_theme='powerlineish'
+
 " ">fholgado/minibufexpl.vim
 " " let g:miniBufExplHideWhenDiff = 1
-"
-" ">Raimondi/delimitMate
-" " let delimitMate_balance_matchpairs = 1
 "
 " ">mattn/gist-vim
 " " let g:gist_clip_command = 'pbcopy'
@@ -199,11 +185,16 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
+" Best leader
+let mapleader = ","
+
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
 
-" Clears highlighting.
+" Global leader shortcuts
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader><n> :NERDTreeToggle<cr>
+nnoremap <leader><t> :TagbarToggle<cr>
 
 " Reselect visual block after indent/outdent
 " EDIT: Honestly just use '.' and 'u'.
@@ -213,11 +204,9 @@ nnoremap <leader><space> :noh<cr>
 " Disable arrow keys by default, turn them into something useful (switch buffer).
 nnoremap <silent> <left> :tabp<cr>
 nnoremap <silent> <right> :tabn<cr>
-" nnoremap <left> :bp<cr>
-" nnoremap <right> :bn<cr>
 
 " Disable shift + K opening man pages.
-" nnoremap <s-k> <nop>
+nnoremap <s-k> <esc>i<cr><esc>
 
 " Don't need shift for commands.
 nnoremap ; :
