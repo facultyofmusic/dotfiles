@@ -200,9 +200,11 @@ nnoremap <leader>t :TagbarToggle<cr>
 " vnoremap < <gv
 " vnoremap > >gv
 
-" Disable arrow keys by default, turn them into something useful (switch buffer).
+" Disable arrow keys by default, turn them into something useful (switch tabs and buffer).
 nnoremap <silent> <left> :tabp<cr>
 nnoremap <silent> <right> :tabn<cr>
+nnoremap <silent> <up> :bp<cr>
+nnoremap <silent> <down> :bn<cr>
 
 " Disable shift + K opening man pages.
 nnoremap <s-k> <esc>i<cr><esc>
