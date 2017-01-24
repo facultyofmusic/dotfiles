@@ -66,6 +66,9 @@ filetype plugin indent on
 " Best leader
 let mapleader = ","
 
+"============= vim-closetag ============
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+
 "============== vimtex ===============
 let g:vimtex_format_enabled=1
 " let g:vimtex_fold_enabled=1
