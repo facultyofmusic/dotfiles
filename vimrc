@@ -67,7 +67,8 @@ filetype plugin indent on
 let mapleader = ","
 
 "============= vim-closetag ============
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+let g:closetag_filenames = "*.xml,*.html,*.phtml,*.xhtml,*.php,*.js"
+au FileType xml,html,phtml,xhtml,php,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 "============== vimtex ===============
 let g:vimtex_format_enabled=1
