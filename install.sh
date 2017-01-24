@@ -12,6 +12,8 @@ git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 # Setup vim
 echo "> Copying vimrc to ~/.vimrc"
 cp ./vimrc ~/.vimrc
+echo "> Copying gvimrc to ~/.gvimrc"
+cp ./gvimrc ~/.gvimrc
 echo "> Making bundle directory"
 mkdir -p ~/.vim/bundle/
 echo "> Getting latest Vundle"
