@@ -13,6 +13,7 @@ Plugin 'xuhdev/SingleCompile'
 
 ">Languages and Syntax
 Plugin 'othree/html5.vim'
+Plugin 'alvan/vim-closetag'
 " Plugin 'digitaltoad/vim-jade'
 " Plugin 'groenewege/vim-less'
 " Plugin 'vim-stylus'
