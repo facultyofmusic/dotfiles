@@ -36,7 +36,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'godlygeek/csapprox'
@@ -99,10 +99,10 @@ map g/  <Plug>(incsearch-stay)
 " " let g:syntastic_auto_loc_list = 0
 
 "=============VIM AIRLINE
-set guifont=Monaco\ for\ Powerline\ 10 
-let g:airline_powerline_fonts = 1
-let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_theme='powerlineish'
+" set guifont=Monaco\ for\ Powerline\ 10 
+" let g:airline_powerline_fonts = 1
+" let g:airline_section_b = '%{strftime("%c")}'
+" let g:airline_theme='powerlineish'
 
 " ">fholgado/minibufexpl.vim
 " " let g:miniBufExplHideWhenDiff = 1
@@ -199,6 +199,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>t :TagbarToggle<cr>
+nnoremap <leader>px :w <bar> :exec '!clear;python3' shellescape(@%, 1)<cr>
 
 " Reselect visual block after indent/outdent
 " EDIT: Honestly just use '.' and 'u'.
@@ -232,11 +233,16 @@ nnoremap <C-l> <C-w>l
 :ca W w
 :ca Q q
 
+" Fold on <space> by indent
+set foldmethod=indent
+set foldlevel=99
+nnoremap <Space> za
+
 
 " Misc Settings
 " =============
 set t_Co=256
-colorscheme jellybeans
+colorscheme hybrid
 
 " Remember 700 lines of history.
 set history=700
