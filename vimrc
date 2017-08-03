@@ -241,8 +241,8 @@ nnoremap <Space> za
 
 " Misc Settings
 " =============
-set t_Co=256
-colorscheme hybrid
+set t_Co=256 
+colorscheme jellybeans
 
 " Remember 700 lines of history.
 set history=700
