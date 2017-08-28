@@ -26,6 +26,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'lervag/vimtex'
+Plugin 'udalov/kotlin-vim'
 
 ">UI Upgrades
 Plugin 'majutsushi/tagbar'
